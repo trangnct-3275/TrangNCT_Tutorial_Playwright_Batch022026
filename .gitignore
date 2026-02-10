@@ -1,4 +1,4 @@
 node_modules/
 playwright-report/
 .env
-test-results
+test-results/
