@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('DemoQA', async ({ page }) => {
+test('DemoQA - Valid data', async ({ page }) => {
   await page.goto('https://demoqa.com/automation-practice-form');
   
   await page.locator('input#firstName').fill("Trang");
