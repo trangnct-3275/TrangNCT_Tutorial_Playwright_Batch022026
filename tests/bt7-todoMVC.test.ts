@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page, Locator } from '@playwright/test';
 
 function getTaskCheckbox(page: Page, taskName: string) {
   return page
@@ -10,19 +10,23 @@ function getTask(page: Page, taskName: string) {
   return page.locator("li", {hasText: taskName});
 }
 
+async function pressEnter(page: Page, locator: Locator) {
+    locator.press("Enter");
+}
+
 test('ToDoMVC Demo: Manage To Do List', async ({ page }) => {
 
   await page.goto("https://demo.playwright.dev/todomvc/#/");
   
   const toDoField = page.locator("input.new-todo");
   await toDoField.fill("Task A");
-  await toDoField.press("Enter");
+  await pressEnter(page, toDoField);
 
   await toDoField.fill("Task B");
-  await toDoField.press("Enter");
+  await pressEnter(page, toDoField);
 
   await toDoField.fill("Task C");
-  await toDoField.press("Enter");
+  await pressEnter(page, toDoField);
 
 
   //await page.locator("label[data-testid]").filter({hasText: "Task B"});
