@@ -61,6 +61,13 @@ test.describe('Sauce Demo login / logout flow - Unhappy case', () => {
     await login(page, username, invalid_password)
     await expect(page.locator('[data-test="error"]'))
         .toContainText('Username and password do not match');
+
+    const errorMsg = await page.locator('[data-test="error"]').textContent();
+    console.log(`Error Message: ${errorMsg}`);
+
+    // Assert to Screenshot Fail
+    await expect(page).toHaveURL(/inventory.html/);
+
     });
 
   test('Empty username', async ({ page }) => {
