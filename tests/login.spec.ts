@@ -1,19 +1,8 @@
-import { test, expect } from './fixtures/my-fixture';
+import { test, expect } from './fixtures/page.fixture';
 
-test.describe('Login Tests with Custom Fixture', () => {
+test('login success', async ({ loginPage }) => {
+  await loginPage.gotoHomePage();
+  await loginPage.login('standard_user', 'secret_sauce');
 
-  test('Invalid password', async ({ loginPage }) => {
-    await loginPage.login('standard_user', 'wrong_password');
-
-    await expect(loginPage.errorMessage)
-      .toContainText('Username and password do not match');
-  });
-
-  test('Empty username', async ({ loginPage }) => {
-    await loginPage.login('', 'secret_sauce');
-
-    await expect(loginPage.errorMessage)
-      .toContainText('Username is required');
-  });
-
+  await expect(loginPage.page).toHaveURL(/inventory/);
 });

@@ -9,13 +9,13 @@ export class LoginPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.usernameInput = page.locator('#user-name');
-    this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#login-button');
+    this.usernameInput = page.locator('input#user-name');
+    this.passwordInput = page.locator('input#password');
+    this.loginButton = page.locator('input#login-button');
     this.errorMessage = page.locator('[data-test="error"]');
   }
 
-  async goto() {
+  async gotoHomePage() {
     await this.page.goto('https://www.saucedemo.com/');
   }
 
