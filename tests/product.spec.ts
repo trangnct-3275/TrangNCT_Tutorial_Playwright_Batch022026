@@ -7,8 +7,13 @@ test.describe('Test 01:', () => {
     await loginPage.login('standard_user', 'secret_sauce');
   });
 
-  test('test', async ({ productPage }) => {
-    console.log(await productPage.getItemByProductName("Sauce Labs Backpack"));
+  test('Add Product to Cart', async ({ productPage, cartPage }) => {
+    await productPage.gotoProductPage();
+    await productPage.addItemToCartByProductName("Sauce Labs Backpack");
+    const count = await productPage.getCountOfItemsFromCartIcon();
+    expect(count).toBe(1);
+    await productPage.gotoCartPage();
+    await expect(cartPage.getCartItemByProductName("Sauce Labs Backpack")).toBeVisible();
   });
   
 });

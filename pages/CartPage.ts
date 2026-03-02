@@ -1,14 +1,16 @@
 import { Page, Locator } from '@playwright/test';
 
-export class ProductPage {
+export class CartPage {
   readonly page: Page;
   readonly menuBurger: Locator;
   readonly logoutLink: Locator;
+  readonly cartItem: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.menuBurger = page.locator("button#react-burger-menu-btn");
     this.logoutLink = page.locator("a#logout_sidebar_link");
+    this.cartItem = page.locator("div.inventory_item");
   
   }
 
@@ -21,9 +23,13 @@ export class ProductPage {
   }
 
   async logout() {
-    this.clickMenuBurger();
+    await this.clickMenuBurger();
     await this.logoutLink.click();
   }
 
-
+  getCartItemByProductName(productName: string) {
+    return this.page
+    .locator('.cart_item')
+    .filter({ hasText: productName });
+  }
 }
