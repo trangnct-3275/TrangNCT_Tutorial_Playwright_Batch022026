@@ -15,5 +15,9 @@ test.describe('Test 01:', () => {
     await productPage.gotoCartPage();
     await expect(cartPage.getCartItemByProductName("Sauce Labs Backpack")).toBeVisible();
   });
+
+  test.afterEach(async ({ productPage}) => {
+    await productPage.logout();
+  });
   
 });
