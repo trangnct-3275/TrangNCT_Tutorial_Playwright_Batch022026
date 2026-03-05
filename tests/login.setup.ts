@@ -6,6 +6,6 @@ test('login success', async ({ loginPage, page }) => {
 
   await expect(loginPage.page).toHaveURL(/inventory/);
   
-  await page.context().storageState({ path: 'auth.json' });
+  await page.context().storageState({ path: 'playwright/.auth/user.json' });
 
 });

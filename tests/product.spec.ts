@@ -24,7 +24,7 @@ test.describe('Test 01: Not save login state', () => {
 
 test.describe('Test 02: Save login state', () => {
 
-  test.use({ storageState: 'auth.json' });
+  test.use({ storageState: 'playwright/.auth/user.json' });
 
   test('Add Product to Cart', async ({ loginPage, productPage, cartPage }) => {    
     await productPage.gotoProductPage();
