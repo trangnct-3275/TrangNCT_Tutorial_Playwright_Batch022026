@@ -33,7 +33,7 @@ test.describe('Test 02: Save login state', () => {
     expect(count).toBe(1);
     
     await productPage.gotoCartPage();
-    await expect(cartPage.getCartItemByProductName("Sauce Labs Backpack")).toBeVisible();
+    await expect(cartPage.getCartItemByProductName("Sauce Labs Backpackk")).toBeVisible();
   });
   
 });

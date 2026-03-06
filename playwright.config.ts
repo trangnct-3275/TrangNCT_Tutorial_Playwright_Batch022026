@@ -6,6 +6,18 @@ export default defineConfig({
   fullyParallel: true,
   retries: 1,
 
+  reporter: [
+    ['list'],                                      
+    
+    ['html', { 
+        outputFolder: 'playwright-report',         
+        open: 'on-failure'  // Open browser after execution >> never, on-failure, always
+    }], 
+    
+    ['json', { outputFile: 'report.json' }]   //export Json report for CI/CD
+  ],
+
+
   use: {
     headless: true,
     screenshot: 'only-on-failure',
