@@ -4,7 +4,7 @@ node_modules/
 # Playwright
 playwright-report/
 test-results/
-sceenshots/
+screenshots/
 
 # Env
 .env
@@ -18,3 +18,8 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+.vscode/
+
+*.json
+*.log
